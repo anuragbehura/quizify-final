@@ -1,0 +1,30 @@
+:root {
+  --primary: #a265d4;
+  --secondary: #ffb100;
+  --success: #54b435;
+  --info: #2dcddf;
+  --warning: #ef9a53;
+  --danger: #dc0000;
+  --light: #ffd4b2;
+  --dark: #1a120b;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+.bg-white {
+  background-color: #EEEEEE !important;
+}
+.text-white {
+  color: #F5EBE0 !important;
+}
+
+.bg-success {
+  background-color: var(--success);
+  border-radius: 5px;
+}
+
+.bg-error {
+  background-color: var(--warning);
+  border-radius: 5px;
+}

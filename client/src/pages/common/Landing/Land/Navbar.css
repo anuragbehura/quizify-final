@@ -1,0 +1,52 @@
+.header {
+  color: white; 
+  padding: 10px 20px; 
+  width: 100%; 
+  box-sizing: border-box; 
+  font-size: 18px;
+  position: absolute; 
+  top: 0; 
+
+ 
+}
+
+.heading h1 {
+  font-size: 40px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  padding-left: 4rem;
+
+}
+
+.heading h1:hover {
+  transform: scale(1.1);
+  background: -webkit-linear-gradient(#4133a8, rgb(176, 21, 176));
+  background-clip:text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header .navigation {
+  list-style: none;
+}
+
+.header .navigation ul li {
+  display: inline-block;
+  list-style: none;
+  padding: 10px 30px;
+}
+
+.header .navigation ul li .txt{
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.header .navigation ul li a:hover {
+  background: -webkit-linear-gradient(#968ddb, rgb(206, 103, 206));
+  background-clip:text;
+  -webkit-text-fill-color: transparent;
+
+}

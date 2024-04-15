@@ -1,0 +1,51 @@
+.layout {
+  padding: 15px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: var(--primary);
+  padding: 10px;
+  border-radius: 5px;
+  height: 100%;
+  /* color: white; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 8px 30px;
+  margin: 5px;
+  cursor: pointer;
+  gap: 15px;
+  font-size: 20px;
+  transition: all 0.2s ease-in-out;
+  color: rgb(3, 3, 3) !important;
+}
+
+.menu-item:hover {
+  background-color: rgb(10, 164, 235);
+  z-index: 1.5;
+  border-radius: 5px;
+}
+
+.active-menu-item {
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.body {
+  width: 100%;
+}
+.header {
+  background: var(--primary);
+  color: white;
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  align-items: center !important;
+}
