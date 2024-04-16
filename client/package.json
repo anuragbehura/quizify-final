@@ -45,5 +45,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5009"
+  "proxy": "https://quizify-final-api.onrender.com"
 }
+
