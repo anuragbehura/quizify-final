@@ -1,40 +1,12 @@
-import { Form, message, Select, Input } from 'antd';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../../apicalls/users';
-import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
+import React from 'react'
 
-const { Option } = Select;
-
-function Register() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const onFinish = async (values) => {
-    try {
-      dispatch(ShowLoading());
-      const response = await registerUser(values);
-      dispatch(HideLoading());
-
-      if (response.success) {
-        message.success(response.message);
-        navigate('/otp-page');
-      } else {
-        message.error(response.message);
-      }
-    } catch (error) {
-      dispatch(HideLoading());
-      message.error(error.message);
-    }
-  };
-
-
+function OTP() {
   return (
     <div className='flex justify-center items-center h-screen w-screen bg-primary'>
       <div className='card w-400 p-3 bg-white'>
         <div className='flex flex-col'>
           <h1 className='text-2xl'>
-            Quizify - REGISTER<i className='ri-user-add-line'></i>
+            Verify OTP<i className='ri-user-add-line'></i>
           </h1>
           <div className='divider'></div>
           <Form layout='vertical' className='mt-2' onFinish={onFinish}>
@@ -68,4 +40,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default OTP;

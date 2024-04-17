@@ -29,4 +29,7 @@ export const getUserInfo = async () => {
 
 
 
+
+
+
 // we first create routes in userRoutes or other route in routes folder then came here to create function(or action) then go to whre it needed like loginUser used in index.js of login folder

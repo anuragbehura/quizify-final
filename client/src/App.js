@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+// import { Button } from 'antd';
 import './stylesheets/theme.css';
 import './stylesheets/alignments.css';
 import './stylesheets/textelements.css';
@@ -11,6 +11,7 @@ import Landing from './pages/common/Landing/Landing';
 import Register from './pages/common/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/common/Home';
+import OTP from './pages/common/OTP'
 import Exams from './pages/admin/Exams';
 import AddEditExam from './pages/admin/Exams/AddEditExam';
 import Loader from './components/Loader';
@@ -29,6 +30,14 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           {/* user routes */}
+          <Route
+          path='/otp-page'
+          element={
+            <ProtectedRoute>
+              <OTP />
+            </ProtectedRoute>
+          }
+          />
           <Route
             path='/home'
             element={
