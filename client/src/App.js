@@ -27,23 +27,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing />} />
+          <Route path='/otp-page' element={<OTP />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           {/* user routes */}
           <Route
-          path='/otp-page'
-          element={
-            <ProtectedRoute>
-              <OTP />
-            </ProtectedRoute>
-          }
-          />
-          <Route
             path='/home'
             element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
+              <Home />
             }
           />
 

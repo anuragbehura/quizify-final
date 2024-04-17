@@ -17,7 +17,7 @@ const Main = () => {
                     <h3>Dive into Quizzes</h3>
                     <p>Explore the realm of knowledge at Quizify.</p>
                     <p>Quizzes that entertain, challenge, and enlighten</p>
-                    <button id='button' type='button'><Link to="/login">Get Started</Link></button>
+                    <button id='button' type='button'><a href="/login">Get Started</a></button>
                 </div>
                 <div className='image'>
                     <img src={image} alt='front pic' height={400} />

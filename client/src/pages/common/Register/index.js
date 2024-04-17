@@ -1,7 +1,7 @@
 import { Form, message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../../apicalls/users';
+import { registerUser } from '../../../apicalls/users'; 
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
 
 const { Option } = Select;
@@ -15,10 +15,10 @@ function Register() {
       dispatch(ShowLoading());
       const response = await registerUser(values);
       dispatch(HideLoading());
-
+      
       if (response.success) {
         message.success(response.message);
-        navigate('/otp-page');
+        navigate('/login');
       } else {
         message.error(response.message);
       }
@@ -54,11 +54,11 @@ function Register() {
               </Select>
             </Form.Item>
             <div className='flex flex-col gap-2'>
-              <button type='submit' className='primary-contained-btn mt-2 w-100'>
-                Register
-              </button>
+                <button type='submit' className='primary-contained-btn mt-2 w-100'>
+                  Register
+                </button>
               <div>
-                Already a member? <Link to='/login'>Login</Link>
+                Already a member? <Link to='/otp-page'>Login</Link>
               </div>
             </div>
           </Form>
