@@ -1,4 +1,5 @@
-import React from 'react';
+import React  from 'react';
+import { Link } from 'react-router-dom';
 import image from '../../../../assets/pic1.png';
 import'./Main.css';
 import Navbar from './Navbar';
@@ -10,13 +11,13 @@ const Main = () => {
         <div className='page1'>
             <div className='main-content'>
             <div className='main'>
-                <Navbar></Navbar>
-                <div className='content'>
+                <Navbar />
+                <div className='contentMain'>
                     <h2>Wisdom in Waves:</h2>
                     <h3>Dive into Quizzes</h3>
                     <p>Explore the realm of knowledge at Quizify.</p>
                     <p>Quizzes that entertain, challenge, and enlighten</p>
-                    <button type='button'>Get Started</button>
+                    <button id='button' type='button'><Link to="/login">Get Started</Link></button>
                 </div>
                 <div className='image'>
                     <img src={image} alt='front pic' height={400} />

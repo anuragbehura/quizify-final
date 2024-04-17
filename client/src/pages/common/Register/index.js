@@ -1,5 +1,4 @@
-import { Form, message, Select } from 'antd';
-import React from 'react';
+import { Form, message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../../apicalls/users';
@@ -10,16 +9,16 @@ const { Option } = Select;
 function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
       const response = await registerUser(values);
       dispatch(HideLoading());
-      
+
       if (response.success) {
         message.success(response.message);
-        navigate('/login');
+        navigate('/otp-page');
       } else {
         message.error(response.message);
       }
@@ -28,6 +27,7 @@ function Register() {
       message.error(error.message);
     }
   };
+
 
   return (
     <div className='flex justify-center items-center h-screen w-screen bg-primary'>
@@ -39,15 +39,15 @@ function Register() {
           <div className='divider'></div>
           <Form layout='vertical' className='mt-2' onFinish={onFinish}>
             <Form.Item name='name' label='Name'>
-              <input type='text' />
+              <Input type='text' />
             </Form.Item>
             <Form.Item name='email' label='Email'>
-              <input type='text' />
+              <Input type='text' />
             </Form.Item>
             <Form.Item name='password' label='Password'>
-              <input type='password' />
+              <Input type='password' />
             </Form.Item>
-            <Form.Item name='isAdmin' label='Are you an teacher?' initialValue={false}>
+            <Form.Item name='isAdmin' label='Are you a teacher?' initialValue={false}>
               <Select>
                 <Option value={false}>No</Option>
                 <Option value={true}>Yes</Option>
@@ -58,7 +58,7 @@ function Register() {
                 Register
               </button>
               <div>
-                Already a member ? <Link to='/login'> Login</Link>
+                Already a member? <Link to='/login'>Login</Link>
               </div>
             </div>
           </Form>

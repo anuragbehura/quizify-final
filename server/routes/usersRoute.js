@@ -1,10 +1,15 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
+const otpModel = require('../models/otpModel');
+const transporter = require('../config/mailerConfig');
+const generateOTP = require('../config/generateOTP')
 const bcrypt = require('bcryptjs');
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('../middlewares/authMiddleware');
 // user registration api
+
+const EMAIL = process.env.EMAIL;
 
 router.post('/register', async (req, res) => {
   try {

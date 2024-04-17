@@ -1,4 +1,4 @@
-.header {
+.header-nav {
   color: white; 
   padding: 10px 20px; 
   width: 100%; 
@@ -6,11 +6,14 @@
   font-size: 18px;
   position: absolute; 
   top: 0; 
-
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-between;
  
 }
 
-.heading h1 {
+.header-nav .heading h1 {
   font-size: 40px;
   color: #fff;
   font-weight: 600;
@@ -19,24 +22,24 @@
 
 }
 
-.heading h1:hover {
+.header-nav .heading h1:hover {
   transform: scale(1.1);
   background: -webkit-linear-gradient(#4133a8, rgb(176, 21, 176));
   background-clip:text;
   -webkit-text-fill-color: transparent;
 }
 
-.header .navigation {
+.header-nav .navigation {
   list-style: none;
 }
 
-.header .navigation ul li {
+.header-nav .navigation ul li {
   display: inline-block;
   list-style: none;
   padding: 10px 30px;
 }
 
-.header .navigation ul li .txt{
+.header-nav .navigation ul li .txt{
   text-decoration: none;
   color: #fff;
   font-size: 20px;
@@ -44,7 +47,7 @@
   cursor: pointer;
 }
 
-.header .navigation ul li a:hover {
+.header-nav .navigation ul li a:hover {
   background: -webkit-linear-gradient(#968ddb, rgb(206, 103, 206));
   background-clip:text;
   -webkit-text-fill-color: transparent;

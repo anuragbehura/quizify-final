@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 const Navbar = () => {
 
   return (
-    <div className="header">
+    <div className="header-nav">
       <div className='heading'>
         <h1>Quizify</h1>
       </div>
