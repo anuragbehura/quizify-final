@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { Form, message, Select, Input } from 'antd';
 
 function OTP() {
   return (
@@ -9,7 +11,7 @@ function OTP() {
             Verify OTP<i className='ri-user-add-line'></i>
           </h1>
           <div className='divider'></div>
-          <Form layout='vertical' className='mt-2' onFinish={onFinish}>
+          <Form layout='vertical' className='mt-2' onFinish>
             <Form.Item name='name' label='Name'>
               <Input type='text' />
             </Form.Item>
@@ -18,12 +20,6 @@ function OTP() {
             </Form.Item>
             <Form.Item name='password' label='Password'>
               <Input type='password' />
-            </Form.Item>
-            <Form.Item name='isAdmin' label='Are you a teacher?' initialValue={false}>
-              <Select>
-                <Option value={false}>No</Option>
-                <Option value={true}>Yes</Option>
-              </Select>
             </Form.Item>
             <div className='flex flex-col gap-2'>
               <button type='submit' className='primary-contained-btn mt-2 w-100'>
