@@ -2,7 +2,7 @@ input, select{
   height: 40px;
   padding: 10px 20px;
   border: solid 2px rgb(144, 142, 142) !important;
-  width: 100%;
+  width: 250px;
   border-radius: 3px;
 }
 
@@ -12,8 +12,8 @@ input, select{
 
 button {
   padding: 0px 25px;
-  border-radius: 2px;
-  height: 40px !important;
+  border-radius: 5px;
+  height: 50px !important;
 }
 
 .primary-contained-btn {

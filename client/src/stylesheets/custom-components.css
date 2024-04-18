@@ -1,5 +1,6 @@
 .card {
   box-shadow: 0 0 1px gray;
+  border-radius: 5px;
 }
 
 .card-lg {

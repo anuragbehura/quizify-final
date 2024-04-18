@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, message, Select, Input } from 'antd';
+import image from '../../../assets/otp.png'
 
 function OTP() {
   return (
     <div className='flex justify-center items-center h-screen w-screen bg-primary'>
-      <div className='card w-400 p-3 bg-white'>
+      <div className='card w-600 p-3 bg-white'>
+      <div className='flex flex-row'>
+          <img src={image} alt='login' height={400} ></img>
         <div className='flex flex-col'>
           <h1 className='text-2xl'>
             Verify OTP<i className='ri-user-add-line'></i>
@@ -29,8 +32,10 @@ function OTP() {
                 Already a member? <Link to='/login'>Login</Link>
               </div>
             </div>
+            
           </Form>
         </div>
+      </div>
       </div>
     </div>
   );

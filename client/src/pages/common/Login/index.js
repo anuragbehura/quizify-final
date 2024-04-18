@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../../../apicalls/users';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
+import image from '../../../assets/login.png'
+
 
 function Login() {
   const dispatch = useDispatch();
@@ -27,40 +29,49 @@ function Login() {
 
   return (
     <div className='flex justify-center items-center h-screen w-screen bg-primary'>
-      <div className='card w-400 p-3 bg-white'>
-        <div className='flex flex-col'>
-          <div className='flex'>
-            <h1 className='text-2xl'>
-              Quizify - LOGIN <i className='ri-login-circle-line'></i>
-            </h1>
-          </div>
-          <div className='divider'></div>
-          <Form layout='vertical' className='mt-2' onFinish={onFinish}>
-            <Form.Item name='email' label='Email'>
-              <input type='text' />
-            </Form.Item>
-            <Form.Item name='password' label='Password'>
-              <input type='password' />
-            </Form.Item>
+      <div className='card w-500 p-3 bg-white'>
+        <div className='flex flex-row'>
 
-            <div className='flex flex-col gap-2'>
-              <button
-                type='submit'
-                className='primary-contained-btn mt-2 w-100'
-              >
-                Login
-              </button>
-              <div>
-                Not a member ? 
-                <Link to='/register' className='underline'>
-                    Register
-                </Link>
-              </div>
+          <img src={image} alt='login' height={400} ></img>
+          
+
+          <div className='flex flex-col'>
+            <div className='flex'>
+              <h1 className='text-2xl '>
+                Quizify - LOGIN <i className='ri-login-circle-line'></i>
+              </h1>
             </div>
-          </Form>
+            <div className='divider'></div>
+
+              <Form layout='vertical' className='mt-2' onFinish={onFinish}>
+                <Form.Item name='email' label='Email'>
+                  <input type='text' />
+                </Form.Item>
+                <Form.Item name='password' label='Password'>
+                  <input type='password' />
+                </Form.Item>
+
+                <div className='flex flex-col gap-2'>
+                  <button
+                    type='submit'
+                    className='primary-contained-btn mt-2 w-100'
+                  >
+                    Login
+                  </button>
+                  <div>
+                    Not a member ?
+                    <Link to='/register' className='underline'>
+                      Register
+                    </Link>
+                  </div>
+                </div>
+              </Form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+  
+      
   );
 }
 
