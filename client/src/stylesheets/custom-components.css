@@ -6,7 +6,7 @@
   box-shadow: 0 0 2px rgb(128, 128, 128);
 }
 .card-lg:hover {
-  background: rgba(240, 239, 239, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   transform: translateY(10px);
   transform: perspective(200px) translateZ(10px);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -62,7 +62,8 @@
 
 .option:hover {
   cursor: pointer;
-  background: rgba(195, 194, 193, 0.7);
+  background: var(--primary);
+  color: #fff;
   /* transform: translateY(5px); */
   transform: perspective(100px) translateZ(2px);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -74,7 +75,9 @@
   box-shadow: rgba(0, 0, 0, 0.638) 0px 0px 1px;
   padding: 10px;
   border-radius: 2px;
+  background-image: var(--primary);
   border: 2px solid var(--primary);
+  color: #fff;
 }
 
 .result {

@@ -1,6 +1,6 @@
 .home-page {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-image: linear-gradient(to bottom right, rgb(34, 22, 107), rgb(74, 10, 74));
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,8 +52,9 @@
   margin-right: 10rem;
 }
 
-.button {
-  padding: 1rem 1.5rem;
+.content-section button {
+  /* padding: 1rem 1.5rem; */
+  /* height: 40px; */
   outline: none;
   border: none;
   font-size: 20px;
@@ -64,17 +65,25 @@
   cursor: pointer;
   box-shadow: 1.5px 10px 30px rgba(0, 0, 0, 0.5); 
   margin-top: 2rem;
-  text-decoration: none; 
+  /* text-decoration: none;  */
   display: inline-block; 
   text-align: center;
   transition: all 0.3s ease-in-out; 
 }
 
-.button:hover {
+.content-section button a{
+  text-decoration: none;
+}
+
+.content-section button:hover {
   background: linear-gradient(to bottom right, rgb(34, 22, 107), rgb(74, 10, 74));
   color: #fff;
   box-shadow: 0 0 15px #fff; 
-  text-decoration: none !important; 
+  
+}
+
+.content-section button a:hover{
+  text-decoration: none !important;
 }
 
 
