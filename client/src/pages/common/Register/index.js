@@ -20,7 +20,7 @@ function Register() {
 
       if (response.success) {
         message.success(response.message);
-        navigate('/login');
+        navigate('/otp-page');
       } else {
         message.error(response.message);
       }

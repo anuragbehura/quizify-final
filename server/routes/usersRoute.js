@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
+const OTP = require('../models/optModel');
 const bcrypt = require('bcryptjs');
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
@@ -100,6 +101,37 @@ router.post("/get-user-info", authMiddleware, async(req,res) => {
     })
   }
 })
+
+
+// send otp
+router.post('/send-otp', async (req, res) => {
+  try {
+    // Generate a 6-digit OTP
+    const otp = Math.random().toString().substr(2, 6);
+
+    // Save OTP to the database
+    const otpRecord = new OTP({
+      email: req.body.email,
+      otp: otp,
+    });
+    await otpRecord.save();
+
+    // Send the OTP to the user via email or any other method
+
+    res.status(200).send({
+      message: 'OTP sent successfully',
+      success: true,
+      otp: otp, 
+    });
+  } catch (error) {
+    console.error('Error sending OTP:', error);
+    res.status(500).send({
+      message: 'Failed to send OTP',
+      success: false,
+      error: error.message,
+    });
+  }
+});
 
 
 module.exports = router;
