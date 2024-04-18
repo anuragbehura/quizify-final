@@ -31,12 +31,16 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           {/* user routes */}
+
           <Route
             path='/home'
             element={
-              <Home />
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
             }
           />
+
 
           <Route
             path='/user/write-exam/:id'
