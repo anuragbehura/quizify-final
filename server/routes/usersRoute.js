@@ -1,8 +1,5 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
-const otpModel = require('../models/otpModel');
-const transporter = require('../config/mailerConfig');
-const generateOTP = require('../config/generateOTP')
 const bcrypt = require('bcryptjs');
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
