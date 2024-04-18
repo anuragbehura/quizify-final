@@ -27,6 +27,25 @@ export const getUserInfo = async () => {
   }
 };
 
+export const verifyOTP = async (payload) => {
+  try {
+    const response = await axiosInstance.post('/api/users/verify-otp', payload);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export const sendOTP = async (payload) => {
+  try {
+    const response = await axiosInstance.post('/api/users/send-otp', payload);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+
 
 
 
