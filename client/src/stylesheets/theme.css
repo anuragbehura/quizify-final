@@ -1,5 +1,5 @@
 :root {
-  --primary: #a265d4;
+  --primary: linear-gradient(to bottom right, rgb(34, 22, 107), rgb(74, 10, 74));;
   --secondary: #ffb100;
   --success: #54b435;
   --info: #2dcddf;
@@ -10,7 +10,7 @@
 }
 
 .bg-primary {
-  background-color: var(--primary) !important;
+  background: var(--primary) !important;
 }
 .bg-white {
   background-color: #EEEEEE !important;

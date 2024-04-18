@@ -1,54 +1,50 @@
-.page1 {
+.home-page {
   height: 100vh;
   width: 100vw;
   background-image: linear-gradient(to bottom right, rgb(34, 22, 107), rgb(74, 10, 74));
   background-repeat: no-repeat;
   background-size: cover;
-  background-blend-mode: overlay;
-
+  background-attachment: fixed;
 }
 
-.main-content {
-  padding-top: 4rem;
-  padding-left: 4rem;
-  padding-right: 5rem;
-
+.content-area {
+  padding: 4rem 4rem 2rem;
 }
 
-.main {
+.content-wrapper {
   display: flex;
-  height: 640px;
+  justify-content: center;
   align-items: center;
+  height: 640px;
   border-radius: 2%;
   background: linear-gradient(to right, rgb(0, 0, 0), rgb(35, 20, 74));
   box-shadow: 0px 0px 10px #04293A;
   backdrop-filter: blur(25px);
-
-
+  overflow: hidden;
 }
 
-.contentMain {
+.content-section {
   flex-basis: 50%;
-  margin-left: 5rem;
-  margin-top: 4rem;
-
+  padding-left: 5rem;
+  padding-top: 4rem;
 }
 
-.contentMain h2 {
+.content-section h2, .content-section h3 {
   font-size: 45px;
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-}
-.contentMain h3{
-  font-size: 45px;
-  background: -webkit-linear-gradient(rgb(83, 75, 140), rgb(147, 16, 147));
-  background-clip:text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
+  margin: 0 0 20px;
 }
 
-.contentMain p {
+.content-section h3 {
+  background: linear-gradient(rgb(83, 75, 140), rgb(147, 16, 147));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.content-section p {
   font-size: 20px;
   color: #fff;
   font-weight: 500;
@@ -56,36 +52,34 @@
   margin-right: 10rem;
 }
 
-.contentMain button {
+.button {
   padding: 1rem 1.5rem;
   outline: none;
   border: none;
-  font-size: 1rem;
+  font-size: 20px;
   white-space: nowrap;
-  color: var(--dark);
+  color: var(--dark, #000); 
   background-color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: 1.5px 10px 30px #000;
+  box-shadow: 1.5px 10px 30px rgba(0, 0, 0, 0.5); 
   margin-top: 2rem;
-
+  text-decoration: none; 
+  display: inline-block; 
+  text-align: center;
+  transition: all 0.3s ease-in-out; 
 }
 
-.contentMain #button {
-  text-decoration: none !important;
-  color: #000;
-  font-size: 18px;
-}
-
-.contentMain button:hover {
+.button:hover {
   background: linear-gradient(to bottom right, rgb(34, 22, 107), rgb(74, 10, 74));
   color: #fff;
-  box-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff;
-
+  box-shadow: 0 0 15px #fff; 
+  text-decoration: none !important; 
 }
 
 
-.image:hover {
+.visual-content:hover {
   cursor: pointer;
   transform: scale(1.1);
+  transition: transform 0.3s ease;
 }

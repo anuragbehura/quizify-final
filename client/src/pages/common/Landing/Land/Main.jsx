@@ -8,23 +8,25 @@ import Navbar from './Navbar';
 
 const Main = () => {
     return (
-        <div className='page1'>
-            <div className='main-content'>
-            <div className='main'>
+        <div className='home-page'>
+        <div className='content-area'>
+            <div className='content-wrapper'>
                 <Navbar />
-                <div className='contentMain'>
+                <div className='content-section'>
                     <h2>Wisdom in Waves:</h2>
                     <h3>Dive into Quizzes</h3>
                     <p>Explore the realm of knowledge at Quizify.</p>
                     <p>Quizzes that entertain, challenge, and enlighten</p>
-                    <button id='button' type='button'><Link to="/login">Get Started</Link></button>
+                    <a href="/login" id='start-button' class='button'>Get Started</a>
+
                 </div>
-                <div className='image'>
+                <div className='visual-content'>
                     <img src={image} alt='front pic' height={400} />
                 </div>
             </div>
-            </div>
         </div>
+    </div>
+    
 
 
 
