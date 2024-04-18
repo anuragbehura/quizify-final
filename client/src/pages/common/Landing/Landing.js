@@ -1,9 +1,9 @@
 import React from 'react'
-import '../Landing/Land/index.css'
-import Main from './Land/Main';
-import Slider from './Land/Slider';
-import Section from './Land/Section';
-import Footer from './Land/Footer';
+import '../Landing/utils/index.css'
+import Main from './utils/Main';
+import Slider from './utils/Slider';
+import Section from './utils/Section';
+import Footer from './utils/Footer';
 
 function Landing() {
   return(
