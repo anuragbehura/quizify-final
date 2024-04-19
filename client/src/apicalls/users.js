@@ -36,15 +36,6 @@ export const verifyOTP = async (payload) => {
   }
 };
 
-export const sendOTP = async (payload) => {
-  try {
-    const response = await axiosInstance.post('/api/users/send-otp', payload);
-    return response.data;
-  } catch (error) {
-    return error.response.data;
-  }
-};
-
 
 
 
