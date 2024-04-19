@@ -5,6 +5,7 @@
   padding: 0.5rem 0;
   background-image: linear-gradient(to bottom right, rgb(20, 13, 66), rgb(74, 10, 74));
   line-height: 1.2; 
+  
 }
 
 .container {
@@ -52,9 +53,9 @@
   height: auto;
 }
 
-.col_2 li a {
-  text-decoration: none;
-  padding: 2rem 0;
+.col_2 ul {
+  text-decoration: none !important;
+  list-style: none !important;
   color: #d8d0f6;
 }
 
