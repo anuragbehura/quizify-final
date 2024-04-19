@@ -1,7 +1,7 @@
 import { Form, message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../../apicalls/users';
+import { registerUser, sendOTP } from '../../../apicalls/users';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
 import image from '../../../assets/register.png'
 import './Register.css'
@@ -15,20 +15,30 @@ function Register() {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await registerUser(values);
-      dispatch(HideLoading());
-
-      if (response.success) {
-        message.success(response.message);
-        navigate('/otp-page');
-      } else {
-        message.error(response.message);
+      
+      // Register user
+      const registerResponse = await registerUser(values);
+      if (!registerResponse.success) {
+        dispatch(HideLoading());
+        return message.error(registerResponse.message);
       }
+  
+      // If registration is successful, send OTP
+      const sendOTPResponse = await sendOTP(values); // Assuming you need to pass email to sendOTP function
+      if (!sendOTPResponse.success) {
+        dispatch(HideLoading());
+        return message.error(sendOTPResponse.message);
+      }
+  
+      dispatch(HideLoading());
+      message.success(registerResponse.message);
+      navigate('/otp-page');
     } catch (error) {
       dispatch(HideLoading());
       message.error(error.message);
     }
   };
+  
 
 
   return (

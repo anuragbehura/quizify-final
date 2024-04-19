@@ -1,14 +1,50 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
-const OTP = require('../models/optModel');
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
+// const sgTransport = require('nodemailer-sendgrid-transport');
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('../middlewares/authMiddleware');
-// user registration api
+
 
 const EMAIL = process.env.EMAIL;
+const EMAIL_PASS = process.env.PASSWORD;
 
+
+// for send mail for verify
+const sendVerifyMail = async (name, email, user_id) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: EMAIL,
+        pass: EMAIL_PASS,
+      }
+    });
+    const mailOptions = {
+      from: EMAIL,
+      to: email,
+      subject: 'Verify Your Email',
+      html: '<p>Hi '+name+', please click here to <a href="http://localhost:3000/verify-otp?id='+user_id+'"> verify </a> your mail.</p>'
+    }
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if(error){
+        console.log(error);
+      }else{
+        console.log('Email sent:- ', info.response);
+      }
+    })
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+// user registration api
 router.post('/register', async (req, res) => {
   try {
     // check if user already exists
@@ -28,7 +64,7 @@ router.post('/register', async (req, res) => {
     const newUser = new User(req.body);
     await newUser.save();
 
-    res.send({
+    res.send( sendVerifyMail(req.body.name, req.body.email, newUser._id),{
       message: 'Congrats User Created Successfully',
       success: true,
     });
@@ -103,33 +139,15 @@ router.post("/get-user-info", authMiddleware, async(req,res) => {
 })
 
 
-// send otp
-router.post('/send-otp', async (req, res) => {
+// verify otp
+
+router.post('/verify-otp', async (req, res) => {
   try {
-    // Generate a 6-digit OTP
-    const otp = Math.random().toString().substr(2, 6);
+    await User.updateOne({_id:req.query.id},{ $set:{ isVerified:true } });
 
-    // Save OTP to the database
-    const otpRecord = new OTP({
-      email: req.body.email,
-      otp: otp,
-    });
-    await otpRecord.save();
 
-    // Send the OTP to the user via email or any other method
-
-    res.status(200).send({
-      message: 'OTP sent successfully',
-      success: true,
-      otp: otp, 
-    });
   } catch (error) {
-    console.error('Error sending OTP:', error);
-    res.status(500).send({
-      message: 'Failed to send OTP',
-      success: false,
-      error: error.message,
-    });
+    console.log(error.message);
   }
 });
 
