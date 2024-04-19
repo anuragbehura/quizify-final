@@ -1,7 +1,7 @@
 import { Form, message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../../apicalls/users';
+import { registerUser, verifyEmail } from '../../../apicalls/users';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
 import image1 from '../../../assets/register.png'
 import './Register.css'
@@ -18,14 +18,19 @@ function Register() {
       
       // Register user
       const registerResponse = await registerUser(values);
+      const verifyResponse = await verifyEmail(values);
       if (!registerResponse.success) {
         dispatch(HideLoading());
         return message.error(registerResponse.message);
       }
+      if (!verifyResponse.success) {
+        dispatch(HideLoading());
+        return message.error(verifyResponse.message);
+      }
   
       dispatch(HideLoading());
       message.success(registerResponse.message);
-      navigate('/otp-page');
+      navigate('/email-page');
     } catch (error) {
       dispatch(HideLoading());
       message.error(error.message);

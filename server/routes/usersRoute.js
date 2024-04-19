@@ -1,156 +1,162 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
+const OTP = require('../models/otpModel');
 const bcrypt = require('bcryptjs');
+const otpGenerator = require('otp-generator')
 const nodemailer = require('nodemailer');
-// const sgTransport = require('nodemailer-sendgrid-transport');
-require("dotenv").config();
+require("dotenv").config({path: 'server\.env'});
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('../middlewares/authMiddleware');
 
+// const EMAIL = process.env.EMAIL;
+// const EMAIL_PASS = process.env.PASSWORD;
 
-const EMAIL = process.env.EMAIL;
-const EMAIL_PASS = process.env.PASSWORD;
-
-
-// for send mail for verify
-const sendVerifyMail = async (name, email, user_id) => {
+// Function to send verification email
+const sendVerifyMail = async (name, email, otp) => {
   try {
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
-      requireTLS: true,
+      // requireTLS: true,
       auth: {
-        user: EMAIL,
-        pass: EMAIL_PASS,
+        user: "behura960@gmail.com",
+        pass: "qtgp sjik holm ryvj",
       }
     });
     const mailOptions = {
-      from: EMAIL,
+      from: "behura960@gmail.com",
       to: email,
       subject: 'Verify Your Email',
-      html: '<p>Hi '+name+', please click here to <a href="http://localhost:3000/verify-otp?id='+user_id+'"> verify </a> your mail.</p>'
-    }
+      html: `<p>Hi ${name}, this is your ${otp} '(one time password)' to verify your email.</p>`
+    };
 
-    transporter.sendMail(mailOptions, function(error, info){
-      if(error){
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
         console.log(error);
-      }else{
-        console.log('Email sent:- ', info.response);
+      } else {
+        console.log('Email sent:', info.response);
       }
-    })
+    });
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
-}
+};
 
-// user registration api
+// User registration API
 router.post('/register', async (req, res) => {
   try {
-    // check if user already exists
     const userExists = await User.findOne({ email: req.body.email });
     if (userExists) {
-      return res
-        .status(200)
-        .send({ message: 'Oh! User already exists', success: false });
+      return res.status(409).send({ message: 'User already exists', success: false });
     }
 
-    // hashing password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     req.body.password = hashedPassword;
 
-    // create new user
     const newUser = new User(req.body);
     await newUser.save();
 
-    res.send( sendVerifyMail(req.body.name, req.body.email, newUser._id),{
-      message: 'Congrats User Created Successfully',
+    // Generate OTP
+    const otp = otpGenerator.generate(6, { upperCaseAlphabets: false, lowerCaseAlphabets: false, specialChars: false }); // Generate a 6-digit OTP
+
+    // Save OTP along with user's email in OTP schema
+    const newOTP = new OTP({ email: req.body.email, otp });
+    await newOTP.save();
+
+    sendVerifyMail(req.body.name, req.body.email, otp); // Send verification email
+
+    res.status(201).send({
+      message: 'User created successfully. Verification email sent.',
       success: true,
     });
   } catch (error) {
     res.status(500).send({
       message: error.message,
-      data: error,
       success: false,
     });
   }
 });
 
-// user login
 
+// User login
 router.post('/login', async (req, res) => {
   try {
-    // check if user already exist
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-      return res
-        .status(200)
-        .send({ message: "User doesn't exist", success: false });
+      return res.status(404).send({ message: "User doesn't exist", success: false });
     }
 
-    // check password
-    const validPassword = await bcrypt.compare(
-      req.body.password,
-      user.password
-    );
-
+    const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) {
-      return res
-        .status(200)
-        .send({ message: 'Invalid Password!', success: false });
+      return res.status(401).send({ message: 'Invalid password', success: false });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1d',
-    });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-    res.send({
-      message: 'User Logged in Successfully',
+    res.status(200).send({
+      message: 'User logged in successfully',
       success: true,
-      data: token,
+      token: token,
     });
   } catch (error) {
     res.status(500).send({
       message: error.message,
-      data: error,
       success: false,
     });
   }
 });
 
-// get user info
-
-router.post("/get-user-info", authMiddleware, async(req,res) => {
+// Get user info
+router.post("/get-user-info", authMiddleware, async (req, res) => {
   try {
-    const user = await User.findById(req.body.userId)
-    res.send({
-      message:"User info fetched succesfully",
+    const user = await User.findById(req.body.userId);
+    res.status(200).send({
+      message: "User info fetched successfully",
       success: true,
-      data:user
-    })
+      data: user,
+    });
   } catch (error) {
     res.status(500).send({
       message: error.message,
       success: false,
-      data: error
-    })
+    });
   }
-})
+});
 
-
-// verify otp
-
-router.post('/verify-otp', async (req, res) => {
+// Verify Email route
+router.post('/verify-email', async (req, res) => {
   try {
-    await User.updateOne({_id:req.query.id},{ $set:{ isVerified:true } });
+    const { email, otp } = req.body;
 
+    // Find the OTP record in the OTP schema
+    const otpRecord = await OTP.findOne({ email });
 
+    // Check if OTP record exists
+    if (!otpRecord) {
+      return res.status(404).send({ message: 'OTP record not found', success: false });
+    }
+
+    // Check if OTP matches
+    if (otpRecord.otp !== otp) {
+      return res.status(400).send({ message: 'Invalid OTP', success: false });
+    }
+
+    // Update the user's isVerified field in the User schema
+    await User.updateOne({ email }, { $set: { isVerified: true } });
+
+    // Delete the OTP record from OTP schema as it's no longer needed
+    await OTP.deleteOne({ email });
+
+    res.status(200).send({ message: 'Email verified successfully', success: true });
   } catch (error) {
-    console.log(error.message);
+    res.status(500).send({
+      message: error.message,
+      success: false,
+    });
   }
 });
 
 
 module.exports = router;
-// from here we go to users.js in api call

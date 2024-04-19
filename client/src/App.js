@@ -11,7 +11,7 @@ import Landing from './pages/common/Landing/Landing';
 import Register from './pages/common/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/common/Home';
-import OTP from './pages/common/OTP'
+import Email from './pages/common/Email'
 import Exams from './pages/admin/Exams';
 import AddEditExam from './pages/admin/Exams/AddEditExam';
 import Loader from './components/Loader';
@@ -27,7 +27,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/otp-page' element={<OTP />} />
+          <Route path='/email-page' element={<Email />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           {/* user routes */}
