@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
-const OTP = require('../models/otpModel');
+const OTP = require('../models/optModel');
 const bcrypt = require('bcryptjs');
 const otpGenerator = require('otp-generator')
 const nodemailer = require('nodemailer');
@@ -80,29 +80,43 @@ router.post('/register', async (req, res) => {
 });
 
 
-// User login
+// user login
+
 router.post('/login', async (req, res) => {
   try {
+    // check if user already exist
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-      return res.status(404).send({ message: "User doesn't exist", success: false });
+      return res
+        .status(200)
+        .send({ message: "User doesn't exist", success: false });
     }
 
-    const validPassword = await bcrypt.compare(req.body.password, user.password);
+    // check password
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+
     if (!validPassword) {
-      return res.status(401).send({ message: 'Invalid password', success: false });
+      return res
+        .status(200)
+        .send({ message: 'Invalid Password!', success: false });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '1d',
+    });
 
-    res.status(200).send({
-      message: 'User logged in successfully',
+    res.send({
+      message: 'User Logged in Successfully',
       success: true,
-      token: token,
+      data: token,
     });
   } catch (error) {
     res.status(500).send({
       message: error.message,
+      data: error,
       success: false,
     });
   }
@@ -126,7 +140,7 @@ router.post("/get-user-info", authMiddleware, async (req, res) => {
 });
 
 // Verify Email route
-router.post('/verify-email', async (req, res) => {
+router.post('/verify-otp', async (req, res) => {
   try {
     const { email, otp } = req.body;
 

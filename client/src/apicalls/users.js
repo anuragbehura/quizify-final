@@ -27,9 +27,9 @@ export const getUserInfo = async () => {
   }
 };
 
-export const verifyEmail = async (payload) => {
+export const verifyOTP = async (payload) => {
   try {
-    const response = await axiosInstance.post('/api/users/verify-otp?id=${user_id}', payload);
+    const response = await axiosInstance.post('/api/users/verify-otp', payload);
     return response.data;
   } catch (error) {
     return error.response.data;
