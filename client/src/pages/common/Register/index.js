@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../../apicalls/users';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
-import image from '../../../assets/register.png'
+import image1 from '../../../assets/register.png'
 import './Register.css'
 
 const { Option } = Select;
@@ -35,7 +35,7 @@ function Register() {
     <div className='flex justify-center items-center h-screen w-screen bg-primary'>
       <div className='card w-600 p-3 bg-white'>
         <div className='flex flex-row'>
-          <img src={image} alt='login' height={400} ></img>
+          <img src={image1} alt='login' height={400} ></img>
 
 
           <div className='flex flex-col'>
