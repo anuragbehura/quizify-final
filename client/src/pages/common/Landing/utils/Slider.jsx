@@ -19,7 +19,7 @@ function CenterMode() {
                    <h1>Features Of Quizify</h1>
             </div>
     <Slider {...settings}>
-
+      
        <div className='content1'>
          <h3>User Authentication</h3>
          <p>Allow users to create accounts or
@@ -56,7 +56,7 @@ function CenterMode() {
          <p>Employ strategies to safeguard user information, incorporating encryption techniques,
            robust authentication protocols, and adherence to legal privacy standards to ensure the confidentiality and integrity of personal data.</p>
        </div>
-
+      
     
      </Slider>
      </div>

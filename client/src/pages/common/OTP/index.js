@@ -6,6 +6,7 @@ import { Form, message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
 import { verifyOTP } from '../../../apicalls/users';
+import image from '../../../assets/otp.png';
 
 function OTP() {
 
@@ -35,7 +36,7 @@ function OTP() {
     <div className='flex justify-center items-center h-screen w-screen bg-primary'>
       <div className='card w-600 p-3 bg-white'>
       <div className='flex flex-row'>
-          {/* <img src={image} alt='login' height={400} ></img> */}
+          <img src={image} alt='login' height={300} ></img>
         <div className='flex flex-col'>
           <div>
             <Link to='/register'><FaArrowLeft /></Link>
