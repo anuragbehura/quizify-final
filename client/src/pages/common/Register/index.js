@@ -60,10 +60,10 @@ function Register() {
               </Form.Item>
               <div className='flex flex-col gap-2'>
                 <button type='submit' className='primary-contained-btn mt-2 w-100'>
-                  Register
+                  SIGN UP
                 </button>
                 <div>
-                  Already a member? <Link to='/otp-page'>Login</Link>
+                  Already a member? <Link to='/login'>Login</Link>
                 </div>
               </div>
             </Form>

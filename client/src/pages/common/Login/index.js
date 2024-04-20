@@ -56,7 +56,7 @@ function Login() {
                     type='submit'
                     className='primary-contained-btn mt-2 w-100'
                   >
-                    Login
+                    Log In
                   </button>
                   <div>
                     Not a member ?
