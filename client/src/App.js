@@ -10,7 +10,7 @@ import Login from './pages/common/Login';
 import Landing from './pages/common/Landing/Landing';
 import Register from './pages/common/Register';
 import ProtectedRoute from './components/ProtectedRoute';
-import Home from './pages/common/Home';
+import Dashboard from './pages/common/Dashboard';
 import OTP from './pages/common/OTP'
 import Exams from './pages/admin/Exams';
 import AddEditExam from './pages/admin/Exams/AddEditExam';
@@ -20,6 +20,7 @@ import WriteExam from './pages/user/WriteExam';
 import UserReports from './pages/user/UserReports';
 import AdminReports from './pages/admin/AdminReports';
 import About from './pages/common/About';
+import Leaderboard from './pages/common/Leaderboard';
 function App() {
   const { loading } = useSelector((state) => state.loader);
   return (
@@ -28,21 +29,29 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/about' element={<About/>} />
+          <Route path='/about' element={<About />} />
           <Route path='/otp-verify' element={<OTP />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           {/* user routes */}
 
           <Route
-            path='/home'
+            path='/dashboard'
             element={
               <ProtectedRoute>
-                <Home />
+                <Dashboard />
               </ProtectedRoute>
             }
           />
 
+          <Route
+            path='/leaderboard'
+            element={
+              <ProtectedRoute>
+                <Leaderboard />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path='/user/write-exam/:id'
