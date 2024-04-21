@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux';
 import WriteExam from './pages/user/WriteExam';
 import UserReports from './pages/user/UserReports';
 import AdminReports from './pages/admin/AdminReports';
+import About from './pages/common/About';
 function App() {
   const { loading } = useSelector((state) => state.loader);
   return (
@@ -27,6 +28,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing />} />
+          <Route path='/about' element={<About/>} />
           <Route path='/otp-verify' element={<OTP />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />

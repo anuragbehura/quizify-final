@@ -15,7 +15,7 @@ function ProtectedRoute({ children }) {
 
   const userMenu = [
     {
-      title: 'Home',
+      title: 'Dashboard',
       paths: ['/home', '/user/write-exam'],
       icon: <i className='ri-home-line'></i>,
       onClick: () => navigate('/home'),
@@ -45,7 +45,7 @@ function ProtectedRoute({ children }) {
 
   const adminMenu = [
     {
-      title: 'Home',
+      title: 'Dashboard',
       paths: ['/home', '/user/write-exam'],
       icon: <i className='ri-home-line'></i>,
       onClick: () => navigate('/home'),
