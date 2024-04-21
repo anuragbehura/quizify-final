@@ -1,4 +1,6 @@
 import { message } from 'antd';
+import { MdOutlineLeaderboard } from "react-icons/md";
+import { TbReport } from "react-icons/tb";
 import React, { useEffect, useState } from 'react';
 import { getUserInfo } from '../apicalls/users';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,19 +25,19 @@ function ProtectedRoute({ children }) {
     {
       title: 'Reports',
       paths: ['/user/reports'],
-      icon: <i className='ri-bar-chart-line'></i>,
+      icon: <TbReport />,
       onClick: () => navigate('/user/reports'),
     },
-    {
-      title: 'Profile',
-      paths: ['/profile'],
-      icon: <i className='ri-user-line'></i>,
-      onClick: () => navigate('/profile'),
-    },
+    // {
+    //   title: 'Profile',
+    //   paths: ['/profile'],
+    //   icon: <i className='ri-user-line'></i>,
+    //   onClick: () => navigate('/profile'),
+    // },
     {
       title: 'Leaderboard',
       paths: ['/leaderboard'],
-      icon: <i className='ri-user-line'></i>,
+      icon: <MdOutlineLeaderboard />,
       onClick: () => navigate('/leaderboard'),
     },
     {
@@ -52,9 +54,9 @@ function ProtectedRoute({ children }) {
   const adminMenu = [
     {
       title: 'Dashboard',
-      paths: ['/home', '/user/write-exam'],
+      paths: ['/dashboard', '/user/write-exam'],
       icon: <i className='ri-home-line'></i>,
-      onClick: () => navigate('/home'),
+      onClick: () => navigate('/dashboard'),
     },
     {
       title: 'Exams',
@@ -65,14 +67,20 @@ function ProtectedRoute({ children }) {
     {
       title: 'Reports',
       paths: ['/admin/reports'],
-      icon: <i className='ri-bar-chart-line'></i>,
+      icon: <TbReport />,
       onClick: () => navigate('/admin/reports'),
     },
+    // {
+    //   title: 'Profile',
+    //   paths: ['/profile'],
+    //   icon: <i className='ri-user-line'></i>,
+    //   onClick: () => navigate('/profile'),
+    // },
     {
-      title: 'Profile',
-      paths: ['/profile'],
-      icon: <i className='ri-user-line'></i>,
-      onClick: () => navigate('/profile'),
+      title: 'Leaderboard',
+      paths: ['/leaderboard'],
+      icon: <MdOutlineLeaderboard />,
+      onClick: () => navigate('/leaderboard'),
     },
     {
       title: 'Logout',
