@@ -1,3 +1,4 @@
+/* Base Styles */
 .page2 {
   background: linear-gradient(to right, rgb(0, 0, 0), rgb(35, 20, 74));
 }
@@ -65,7 +66,7 @@
   border: none;
   cursor: pointer;
   z-index: 99;
-  font-size: 0; 
+  font-size: 0;
 }
 
 .slick-prev {
@@ -93,4 +94,59 @@ button.slick-arrow.slick-prev{
 }
 button.slick-arrow.slick-next{
   font-size: 0;
+}
+/* Responsive Styles for Tablets */
+@media (max-width: 768px) {
+  .section h1 {
+    font-size: 24px;
+  }
+
+  .slider-container {
+    width: 95%;
+  }
+
+  .content1 {
+    width: 200px; /* Smaller width to fit better in smaller screens */
+    height: 160px; /* Adjust height accordingly */
+  }
+
+  .content1 h3 {
+    font-size: 18px;
+  }
+
+  .content1 p {
+    font-size: 14px;
+  }
+}
+
+/* Responsive Styles for Phones */
+@media (max-width: 480px) {
+  .section {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .section h1 {
+    font-size: 20px;
+  }
+
+  .content1 {
+    width: 100%; /* Full width on small screens */
+    height: auto; /* Height auto for flexible content fitting */
+    padding: 15px;
+  }
+
+  .content1 h3 {
+    font-size: 16px;
+  }
+
+  .content1 p {
+    font-size: 12px;
+  }
+
+  .slick-prev,
+  .slick-next {
+    width: 30px;
+    height: 30px;
+  }
 }

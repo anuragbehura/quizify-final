@@ -4,19 +4,24 @@
   left: 0;
   padding: 0.5rem 0;
   background-image: linear-gradient(to bottom right, rgb(20, 13, 66), rgb(74, 10, 74));
-  line-height: 1.2; 
-  
+  line-height: 1.2;
 }
 
 .container {
   padding-right: 8%;
   padding-left: 8%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .row {
   display: flex;
+  flex-wrap: wrap; /* Allows the columns to wrap on smaller screens */
+}
+
+.col_1, .col_2, .col_3 {
+  flex: 1 1 30%; /* Adjust this value based on your layout preference */
 }
 
 .col_1 h1 {
@@ -25,61 +30,97 @@
 }
 
 .col_1 p {
-  margin-right: 20%; 
   color: #d8d0f6;
+  padding-top: 3px;
 }
 
 .icon {
   font-size: 1.5rem;
-  margin: 1rem 1rem;
+  margin: 1rem;
   color: #b2a7da;
   cursor: pointer;
 }
 
 .col_2 {
-  padding-right: 22%;
   padding-top: 1rem;
+ 
+
 }
 
-.col_2 h3 {
+.col_2 h3{
   color: #fff;
-  padding: 0.5rem 0;
+  /* padding: 0.5rem ; */
+  padding-left: 1.5rem;
   font-weight: 550;
+  text-align: center;
+  align-items: center;
 }
 
-.col_2 ul {
-  list-style: none;
-  width: 120px;
-  height: auto;
-}
-
-.col_2 ul {
-  text-decoration: none !important;
-  list-style: none !important;
+.col_2 ul{
   color: #d8d0f6;
+  text-align: center;
+  line-height: 25px;
+}
+
+.col_2 ul, .col_3 ul {
+  list-style: none;
 }
 
 .col_3 {
-  width: 50%;
   padding-top: 1rem;
 }
 
-.col_3 h3 {
+.col_3 h3{
   color: #fff;
-  padding: 0.5rem 0;
+  /* padding: 0.5rem  ; */
+  /* padding-left: 10px; */
   font-weight: 550;
+  text-align: center;
+  align-items: center;
 }
 
 .col_3 p {
+  padding: 1px;
+  padding-left: 9rem;
   color: #d8d0f6;
-  padding: 2px 0;
+  /* text-align: center; */
+  line-height: 0.5px;
 }
+
+/* 
+@media (max-width: 768px) {
+  .container {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .col_1, .col_2, .col_3 {
+    flex: 1 1 100%; 
+    margin-top: 10px;
+  }
+
+  .col_2, .col_3 {
+    text-align: center; 
+  }
+
+  .icon {
+    margin: 0.5rem; 
+  }
+} */
+
+/* @media (max-width: 480px) {
+  .container {
+    flex-direction: column; 
+  }
+
+  .col_1, .col_2, .col_3 {
+    text-align: center; 
+  }
+} */
+
 
 .copyright {
   text-align: center;
-  padding: 1rem;
-}
-
-.copyright p {
+  padding-top: 20px ;
   color: #fff;
 }

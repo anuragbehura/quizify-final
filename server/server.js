@@ -11,7 +11,7 @@ const resportsRoute = require("./routes/reportsRoute");
 
 app.use(express.json());
 
-app.use("/api/users", usersRoute);
+app.use("/api/users", usersRoute); 
 app.use("/api/exams", examsRoute);
 app.use("/api/reports", resportsRoute);
 const port = process.env.PORT || 5009;
