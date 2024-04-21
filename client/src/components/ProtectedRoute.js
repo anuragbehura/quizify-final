@@ -16,9 +16,9 @@ function ProtectedRoute({ children }) {
   const userMenu = [
     {
       title: 'Dashboard',
-      paths: ['/home', '/user/write-exam'],
+      paths: ['/dashboard', '/user/write-exam'],
       icon: <i className='ri-home-line'></i>,
-      onClick: () => navigate('/home'),
+      onClick: () => navigate('/dashboard'),
     },
     {
       title: 'Reports',
@@ -26,12 +26,18 @@ function ProtectedRoute({ children }) {
       icon: <i className='ri-bar-chart-line'></i>,
       onClick: () => navigate('/user/reports'),
     },
-    // {
-    //   title: 'Profile',
-    //   paths: ['/profile'],
-    //   icon: <i className='ri-user-line'></i>,
-    //   onClick: () => navigate('/profile'),
-    // },
+    {
+      title: 'Profile',
+      paths: ['/profile'],
+      icon: <i className='ri-user-line'></i>,
+      onClick: () => navigate('/profile'),
+    },
+    {
+      title: 'Leaderboard',
+      paths: ['/leaderboard'],
+      icon: <i className='ri-user-line'></i>,
+      onClick: () => navigate('/leaderboard'),
+    },
     {
       title: 'Logout',
       paths: ['/logout'],
