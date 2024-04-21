@@ -10,7 +10,7 @@ import Login from './pages/common/Login';
 import Landing from './pages/common/Landing/Landing';
 import Register from './pages/common/Register';
 import ProtectedRoute from './components/ProtectedRoute';
-import Home from './pages/common/Home';
+import Dashboard from './pages/common/Dashboard';
 import OTP from './pages/common/OTP'
 import Exams from './pages/admin/Exams';
 import AddEditExam from './pages/admin/Exams/AddEditExam';
@@ -35,10 +35,10 @@ function App() {
           {/* user routes */}
 
           <Route
-            path='/home'
+            path='/dashboard'
             element={
               <ProtectedRoute>
-                <Home />
+                <Dashboard />
               </ProtectedRoute>
             }
           />
