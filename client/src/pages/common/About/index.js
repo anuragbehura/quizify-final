@@ -1,5 +1,6 @@
 import React from 'react'
 import './About.css'
+import guide from '../../../assets/guide.jpeg'
 import image from '../../../assets/118.png'
 import img1 from '../../../assets/img1.JPG'
 import img2 from '../../../assets/img2.jpg'
@@ -21,6 +22,21 @@ function About() {
         <p> We are the makers of Quizify, that is a quiz system that streamlines quiz creation and evaluation for educators while providing interactive learning experiences for students. With user-friendly features and real-time feedback, it enhances teaching and learning by facilitating customization and assessment,
           fostering engagement and progress tracking.</p>
       </div>
+      <div className='guide-section'>
+        <h2>Guided By</h2>
+        <div className='guide-card'>
+          <div className='guide-content'>
+           <img className='img5' src={img5} alt='img5' height={250}></img>
+           <h1>Dr. Mukesh Bathre Sir</h1>
+           <h3>Head of the department</h3>
+          </div>
+          <div className='guide-content'>
+           <img className='img6' src={guide} alt='img6' height={250}></img>
+           <h1>Devraj Sir</h1>
+           <h3> Our Mentor</h3>
+          </div>
+        </div>
+      </div>
       <div className='about-section'>
         <h2>People behind it</h2>
         <div className='about-card'>
@@ -40,23 +56,6 @@ function About() {
             <h3>Connectivity developer</h3>
           </div>
         </div>
-      </div>
-      <div className='guide-section'>
-        <h2>Guided By</h2>
-        <div className='guide-card'>
-          <div className='guide-content'>
-           <img className='img5' src={img5} alt='img5' height={250}></img>
-           <h1>Dr. Mukesh Bathre Sir</h1>
-           <h3>Head of the department</h3>
-          </div>
-          <div className='guide-content'>
-           {/* <img className='img6' src={img6} alt='img6' height={250}></img> */}
-           <h1>Devraj Sir</h1>
-           <h3> Our Mentor</h3>
-          </div>
-
-        </div>
-
       </div>
     </div>
   )

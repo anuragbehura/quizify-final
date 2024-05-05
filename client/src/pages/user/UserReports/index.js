@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PageTitle from '../../../components/PageTitle';
-import { message, Modal, Table } from 'antd';
+import { message, Table } from 'antd';
 import { useDispatch } from 'react-redux';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
-import { getAllReportsByUser } from '../../../apicalls/reports';
+import { getAllReports } from '../../../apicalls/reports';
+
 import moment from 'moment';
 
-function UserReports() {
-  const [reportsData, setReportsData] = useState([]);
+function AdminReports() {
+  const [reportsData, setReportsData] = React.useState([]);
   const dispatch = useDispatch();
+  const [filters, setFilters] = React.useState({
+    examName: '',
+    userName: '',
+  });
   const columns = [
     {
-      
       title: 'Exam Name',
       dataIndex: 'examName',
       render: (text, record) => <>{record.exam.name}</>,
+    },
+    {
+      title: 'User Name',
+      dataIndex: 'userName',
+      render: (text, record) => <>{record.user.name}</>,
     },
     {
       title: 'Date',
@@ -52,10 +61,10 @@ function UserReports() {
     },
   ];
 
-  const getData = async () => {
+  const getData = async (tempFilters) => {
     try {
       dispatch(ShowLoading());
-      const response = await getAllReportsByUser();
+      const response = await getAllReports(tempFilters);
       if (response.success) {
         setReportsData(response.data);
       } else {
@@ -69,20 +78,53 @@ function UserReports() {
   };
 
   useEffect(() => {
-    getData();
+    getData(filters);
   }, []);
 
   return (
     <div>
       <PageTitle title='Reports' />
       <div className='divider'></div>
-      <Table
-        rowKey='record => record.id'
-        columns={columns}
-        dataSource={reportsData}
-      />
+      <div className='flex gap-2'>
+        <input
+          type='text'
+          placeholder='Exam'
+          value={filters.examName}
+          onChange={(e) => setFilters({ ...filters, examName: e.target.value })}
+        />
+        <input
+          type='text'
+          placeholder='User'
+          value={filters.userName}
+          onChange={(e) => setFilters({ ...filters, userName: e.target.value })}
+        />
+        <button
+          className='primary-outlined-btn'
+          onClick={() => {
+            setFilters({
+              examName: '',
+              userName: '',
+            });
+            getData({
+              examName: '',
+              userName: '',
+            });
+          }}
+        >
+          Clear
+        </button>
+        <button
+          className='primary-contained-btn'
+          onClick={() => getData(filters)}
+        >
+          Search
+        </button>
+      </div>
+      <Table  columns={columns} dataSource={reportsData} className='mt-2' />
     </div>
   );
 }
 
-export default UserReports;
+export default AdminReports;
+// from here we go to routes
+
