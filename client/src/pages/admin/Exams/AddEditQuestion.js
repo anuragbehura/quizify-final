@@ -61,6 +61,7 @@ function AddEditQuestion({
         setShowAddEditQuestionModal(false);
         setSelectedQuestion(null);
       }}
+      width={575} 
     >
       <Form
         layout='vertical'
