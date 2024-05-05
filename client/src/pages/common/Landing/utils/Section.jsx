@@ -15,7 +15,7 @@ const Section = () => {
                 </div>
                 <div className='user_content'>
                     <div className='user'>
-                        <div className='user_image'>
+                        <div className='user_image1'>
                             <img src={image1} alt="student" height={150} width={150} />
                         </div>
                         <h2>Students</h2>
@@ -23,7 +23,7 @@ const Section = () => {
                             and receive immediate feedback on their performance.</p>
                     </div>
                     <div className='user'>
-                        <div className='user_image'>
+                        <div className='user_image2'>
                             <img src={image2} alt="teacher" height={150} width={150} />
                         </div>
                         <h2>Teachers</h2>

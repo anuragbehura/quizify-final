@@ -29,7 +29,7 @@ const Footer = () => {
                                 <a className='link' href='#'>Services</a>
                             </li>
                             <li className='footer_item'>
-                                <a className='link' href='#'>About Us</a>
+                                <a className='link' href='/about'>About Us</a>
                             </li>
                             <li className='footer_item'>
                                 <a className='link' href='#'>Contact Us</a>

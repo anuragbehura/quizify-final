@@ -6,6 +6,7 @@ import img1 from '../../../assets/img1.JPG'
 import img2 from '../../../assets/img2.jpg'
 import img3 from '../../../assets/img3.jpg'
 import img5 from '../../../assets/img5.jpg'
+import img6 from '../../../assets/img6.jpeg'
 
 
 function About() {
@@ -53,6 +54,11 @@ function About() {
           <div className='card-content'>
             <img className='img3' src={img3} alt='img3' height={250}></img>
             <h1>Sourav Ku Mohanta</h1>
+            <h3>Connectivity developer</h3>
+          </div>
+          <div className='card-content'>
+            <img className='img3' src={img6} alt='img3' height={250}></img>
+            <h1>Soumya Chakra</h1>
             <h3>Connectivity developer</h3>
           </div>
         </div>

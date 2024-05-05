@@ -33,7 +33,7 @@
   
   }
   
-  .user_image {
+  .user_image1, .user_image2 {
     margin-top: 10rem;
     padding-left: 8rem;
     height: 150px;
@@ -43,7 +43,13 @@
   
   }
   
-  .user_image img {
+  .user_image1 img {
+    object-fit: cover;
+    border-radius: 50%;
+  
+  }
+
+  .user_image2 img {
     object-fit: cover;
     border-radius: 50%;
   

@@ -43,7 +43,6 @@
 
 .col_2 {
   padding-top: 1rem;
- 
 
 }
 
@@ -60,6 +59,7 @@
   color: #d8d0f6;
   text-align: center;
   line-height: 25px;
+  padding-left: 10px;
 }
 
 .col_2 ul, .col_3 ul {
